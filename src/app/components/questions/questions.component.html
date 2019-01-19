@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-content>
+      <h4 *ngIf="questionsFound" mat-subeader>Results for: <span class="tag">{{resultTag}}</span></h4>  
+      <ngx-masonry [useImagesLoaded]="true" >
+        <!-- <ngxMasonryItem  *ngFor="let question of questions" class="image-container">
+              <div class="media">
+                <div class="pull-left visible-lg visible-md media-left">
+                  <img src="{{question.owner.profile_image}}" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                  <h5 class="mt-0">{{question.title}}</h5>
+                  <span class="badge badge-pill badge-success" *ngFor="let tag of question.tags">{{tag}}</span>                
+                </div>
+              </div>
+        </ngxMasonryItem> -->
+        <ngxMasonryItem *ngFor="let question of questions" class="card-container">
+          <div class="block" >
+            <!-- <a href="{{question.owner.link}}">
+              <img src="{{question.owner.profile_image}}" alt="">
+            </a> -->
+            <div>
+              <h6>{{question.title}}</h6>
+              <span class="label label-primary margin-right-2" *ngFor="let tag of question.tags">{{tag}}</span>
+              <a matTooltip="Click to know more">Know more</a>               
+            </div>
+          </div>
+      </ngxMasonryItem>
+      </ngx-masonry>
+      <br><br>
+    </mat-card-content>
+</mat-card> 
+<!-- Paginator -->
+<mat-paginator *ngIf="paginatorFlag" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"
+#paginator  (page)="pageEvent = handlePagination($event)"></mat-paginator>

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-content>
+    <form #searchForm="ngForm">
+      <div class="form-group">
+        <mat-form-field style="width:50%;">
+          <input required matInput name="searchTag" placeholder="Type your search query here" [(ngModel)]="searchTag">
+          <button mat-button *ngIf="searchTag" matSuffix mat-icon-button aria-label="Clear" (click)="searchTag=''">
+            <mat-icon>x</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>      
+      <div class="form-group" style="width:50%;">          
+          <div class="button-row" >
+            <button mat-flat-button color="primary" [disabled]="searchForm.invalid" 
+                                (click)="searchQuestions(searchTag)">Questions</button>
+            <button mat-flat-button color="accent" [disabled]="searchForm.invalid"
+                                (click)="searchInspiration(searchTag)">Get Inspired</button>
+          </div>
+      </div>
+    </form>
+  </mat-card-content>
+  <br>  
+</mat-card>
+<router-outlet></router-outlet>
